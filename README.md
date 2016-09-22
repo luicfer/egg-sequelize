@@ -1,44 +1,117 @@
 # egg-sequelize
 
-[![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
-[![Test coverage][codecov-image]][codecov-url]
-[![David deps][david-image]][david-url]
-[![Known Vulnerabilities][snyk-image]][snyk-url]
-[![npm download][download-image]][download-url]
-
-[npm-image]: https://img.shields.io/npm/v/egg-sequelize.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/egg-sequelize
-[travis-image]: https://img.shields.io/travis/eggjs/egg-sequelize.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eggjs/egg-sequelize
-[codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-sequelize.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/eggjs/egg-sequelize?branch=master
-[david-image]: https://img.shields.io/david/eggjs/egg-sequelize.svg?style=flat-square
-[david-url]: https://david-dm.org/eggjs/egg-sequelize
-[snyk-image]: https://snyk.io/test/npm/egg-sequelize/badge.svg?style=flat-square
-[snyk-url]: https://snyk.io/test/npm/egg-sequelize
-[download-image]: https://img.shields.io/npm/dm/egg-sequelize.svg?style=flat-square
-[download-url]: https://npmjs.org/package/egg-sequelize
-
-<!--
-Description here.
--->
+egg plugin for sequelize
 
 ## Install
 
 ```bash
 $ npm i egg-sequelize
+
+# And one of the following:
+$ npm install --save pg pg-hstore
+$ npm install --save mysql // For both mysql and mariadb dialects
+$ npm install --save sqlite3
+$ npm install --save tedious // MSSQL
+
 ```
 
-## Usage
+## Configuration
 
-<!--
-Usage, configuration and example here.
--->
+Change `${app_root}/config/plugin.js` to enable Sequelize plugin:
+
+```js
+exports.sequelize = {
+  enable: true,
+  package: 'egg-sequelize',
+};
+```
+
+Configure database information in `${app_root}/config/config.default.js`:
+
+
+### Simple database instance
+
+```js
+exports.sequelize = {
+  // database configuration
+  client: {
+    // host
+    host: 'sequelize.com',
+    // port
+    port: '3306',
+    // username
+    user: 'mobile_pub',
+    // password
+    password: 'password',
+    // database
+    database: 'mobile_pub',
+    option:{
+      // see sequelize doc http://sequelize.readthedocs.io/en/v3/api/sequelize/
+    },
+  },
+  // load into app, default is open 
+  app: true,
+  // load into agent, default is close
+  agent: false,
+};
+```
+
+Usage:
+
+```js
+app.sequelize.define(); 
+```
+
+
+### Multiple database instance
+
+```js
+exports.sequelize = {
+  clients: {
+    // clientId, access the client instance by app.sequelize.get('clientId')
+    db1: {
+      // host
+      host: 'sequelize.com',
+      // port
+      port: '3306',
+      // username
+      user: 'mobile_pub',
+      // password
+      password: 'password',
+      // database
+      database: 'mobile_pub',
+      option:{
+            // see sequelize doc http://sequelize.readthedocs.io/en/v3/api/sequelize/
+      },
+    },
+    // ...
+  },
+  // default configuration for all databases
+  default: {
+
+  },
+
+  // load into app, default is open 
+  app: true,
+  // load into agent, default is close
+  agent: false,
+};
+```
+
+Usage:
+
+```js
+const client1 = app.sequelize.get('client1');
+client1.define()
+
+const client2 = app.sequelize.get('client2');
+client2.define()
+```
+
 
 ## Questions & Suggestions
 
-Please open an issue [here](https://github.com/eggjs/egg/issues).
+Please open an issue 
 
 ## License
 

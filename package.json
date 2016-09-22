@@ -1,6 +1,6 @@
 {
   "name": "egg-sequelize",
-  "version": "0.0.1-beta",
+  "version": "0.0.1",
   "description": "sequelize plugin for egg",
   "eggPlugin": {
     "name": "sequelize"
@@ -43,12 +43,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggjs/egg-sequelize.git"
+    "url": "git+https://github.com/luicfer/egg-sequelize.git"
   },
   "bugs": {
-    "url": "https://github.com/eggjs/egg/issues"
+    "url": "https://github.com/luicfer/egg-sequelize/issues"
   },
-  "homepage": "https://github.com/eggjs/egg-sequelize#readme",
+  "homepage": "https://github.com/luicfer/egg-sequelize#readme",
   "author": "luicfer",
   "license": "MIT"
 }

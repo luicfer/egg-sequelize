@@ -17,8 +17,11 @@ exports.sequelize = {
   //   user: 'user',
   //   password: 'password',
   //   database: 'database',
+  //   option: {
+  //     // see sequelize doc http://sequelize.readthedocs.io/en/v3/api/sequelize/
+  //   },
   // },
-  // 多数据库
+  // // 多数据库
   // clients: {
   //   db1: {
   //     host: 'host',
@@ -26,6 +29,9 @@ exports.sequelize = {
   //     user: 'user',
   //     password: 'password',
   //     database: 'database',
+  //     option: {
+  //       // see sequelize doc http://sequelize.readthedocs.io/en/v3/api/sequelize/
+  //     },
   //   },
   //   db2: {
   //     host: 'host',
@@ -33,6 +39,9 @@ exports.sequelize = {
   //     user: 'user',
   //     password: 'password',
   //     database: 'database',
+  //     option: {
+  //       // see sequelize doc http://sequelize.readthedocs.io/en/v3/api/sequelize/
+  //     },
   //   },
   // },
 };
